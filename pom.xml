@@ -1,0 +1,103 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>net.tsunoda</groupId>
+    <artifactId>java-root-pom</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <mavenEnforcerPlugin.disabled>false</mavenEnforcerPlugin.disabled>
+  
+        <mavenCompilerPlugin.version>3.1</mavenCompilerPlugin.version>
+        <mavenDeployPlugin.version>2.8.2</mavenDeployPlugin.version>
+        <mavenEnforcerPlugin.version>1.3.1</mavenEnforcerPlugin.version>
+        <mavenJarPlugin.version>2.5</mavenJarPlugin.version>
+        <mavenJavadocPlugin.version>2.10.1</mavenJavadocPlugin.version>
+        <mavenSourcePlugin.version>2.3</mavenSourcePlugin.version>
+        <mavenSurefirePlugin.version>2.17</mavenSurefirePlugin.version>
+        <mavenWarPlugin.version>2.4</mavenWarPlugin.version>
+    </properties>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${mavenCompilerPlugin.version}</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${mavenDeployPlugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${mavenEnforcerPlugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>enforce</id>
+                            <configuration>
+                                <rules>
+                                    <DependencyConvergence />
+                                </rules>
+                                <skip>${mavenEnforcerPlugin.disabled}</skip>
+                            </configuration>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>${mavenJarPlugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${mavenJavadocPlugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${mavenSourcePlugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${mavenSurefirePlugin.version}</version>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${mavenWarPlugin.version}</version>
+                    <configuration>
+                        <archive>
+                            <manifestEntries>
+                                <Application-Version>${project.version}</Application-Version>
+                            </manifestEntries>
+                        </archive>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+    <scm>
+        <connection>scm:git:ssh://git@github.com/ktsunoda/java-root-pom.git</connection>
+        <tag>HEAD</tag>
+    </scm>
+</project>
