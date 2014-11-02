@@ -96,6 +96,21 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <snapshotRepository>
+            <id>berkeley-io</id>
+            <name>berkeley-io-snapshots</name>
+            <url>http://artifacts.berkeley.io:8081/artifactory/libs-snapshot-local</url>
+            <uniqueVersion>false</uniqueVersion>
+        </snapshotRepository>
+
+        <repository>
+            <id>berkeley-io</id>
+            <name>berkeley-io-releases</name>
+            <url>http://artifacts.berkeley.io:8081/artifactory/libs-release-local</url>
+        </repository>
+    </distributionManagement>
+
     <scm>
         <connection>scm:git:ssh://git@github.com/ktsunoda/java-root-pom.git</connection>
         <tag>HEAD</tag>
